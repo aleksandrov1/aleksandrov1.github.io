@@ -34,7 +34,7 @@ function addMeal(mealData, random = false) {
         <div class="meal-header">
         ${random ? `
         <span class="random"> Random Recipe </span>` : ''}
-        <img
+        <img class="thumbnail"
            src="${mealData.strMealThumb}"
            alt="${mealData.strMeal}"
         />
