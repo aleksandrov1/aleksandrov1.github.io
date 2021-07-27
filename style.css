@@ -80,3 +80,45 @@ img {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
+
+.meal-info-container {
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.meal-info-container.hidden {
+    display: none;
+    pointer-events: none;
+}
+
+.meal-info {
+    background-color: #fff;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 0 6.5rem;
+}
+
+.meal-info h1 {
+    text-align: center;
+}
+
+.meal-info img {
+    max-width: 100%;
+    object-fit: fill;
+}
+.closepopup {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}

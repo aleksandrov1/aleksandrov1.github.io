@@ -1,6 +1,9 @@
 const mealsEl = document.getElementById('meals');
 const searchTerm = document.getElementById('search-term');
 const searchBtn = document.getElementById('searchBtn');
+const popup = document.getElementById('meal-popup');
+const popupBtn = document.getElementById('closepopup');
+const mealInfo = document.getElementById('meal-info');
 
 
 getRandomMeal();
@@ -26,6 +29,21 @@ async function searchForMeal(term) {
     return meals;
 }
 
+function showInfo(mealData) {
+    const mealEl = document.createElement('div');
+
+    mealEl.innerHTML = `
+    <h1>${mealData.strMeal}</h1>
+    <img src="${mealData.strMealThumb}" alt="">
+</div>
+<div>
+    <p>${mealData.strInstructions}</p>
+    `
+
+    mealInfo.appendChild(mealEl);
+    popup.classList.remove('hidden');
+}
+
 function addMeal(mealData, random = false) {
     const meal = document.createElement('div');
     meal.classList.add('meal');
@@ -45,6 +63,9 @@ function addMeal(mealData, random = false) {
     `;
 
     meals.appendChild(meal);
+    meal.addEventListener("click", () => {
+        showInfo(mealData);
+    });
 
 }
 
@@ -60,3 +81,8 @@ searchBtn.addEventListener('click', async() => {
         });
     }
 });
+popupBtn.addEventListener('click', () => {
+    mealInfo.innerHTML = '';
+    popup.classList.add('hidden');
+})
+

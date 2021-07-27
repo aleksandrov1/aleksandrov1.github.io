@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="font-awesome.min.css"/>
     <script src="script.js" defer></script>
     <title>Recipes</title>
 </head>
@@ -15,6 +17,12 @@
 </header>
     <div class="recipe-box">
     <div class="meals" id="meals"></div>
+    </div>
+ 
+    <div class="meal-info-container hidden" id="meal-popup">
+    <button class="closepopup" id="closepopup"><i class="fa fa-times" aria-hidden="true"></i></button>
+    <div id="meal-info" class="meal-info">
+    </div>
     </div>
 </body>
 </html>
