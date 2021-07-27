@@ -1,4 +1,7 @@
-const meals = document.getElementById('meals');
+const mealsEl = document.getElementById('meals');
+const searchTerm = document.getElementById('search-term');
+const searchBtn = document.getElementById('searchBtn');
+
 
 getRandomMeal();
 
@@ -9,17 +12,28 @@ async function getRandomMeal() {
     const reslutData = await result.json();
     const randomMeal = reslutData.meals[0];
 
-    addMeal(randomMeal);
-    console.log(randomMeal);
+    addMeal(randomMeal, true);
 }
 
-function addMeal(mealData) {
+async function searchForMeal(term) {
+    const resp = await fetch(
+        "https://www.themealdb.com/api/json/v1/1/search.php?s=" + term
+    );
+
+    const respData = await resp.json();
+    const meals = respData.meals;
+
+    return meals;
+}
+
+function addMeal(mealData, random = false) {
     const meal = document.createElement('div');
     meal.classList.add('meal');
 
     meal.innerHTML = `
         <div class="meal-header">
-        <span class="random"> Random Recipe </span>
+        ${random ? `
+        <span class="random"> Random Recipe </span>` : ''}
         <img
            src="${mealData.strMealThumb}"
            alt="${mealData.strMeal}"
@@ -27,10 +41,22 @@ function addMeal(mealData) {
         </div>
         <div class="meal-body">
         <h4>${mealData.strMeal}</h4>
-        <p>${mealData.strInstructions}</p>
         </div>
     `;
 
     meals.appendChild(meal);
 
 }
+
+searchBtn.addEventListener('click', async() => {
+    //clear the HTML
+    mealsEl.innerHTML = '';
+    const text = searchTerm.value;
+    const meals = await searchForMeal(text);
+
+    if (meals) {
+        meals.forEach(meal => {
+            addMeal(meal);
+        });
+    }
+});
