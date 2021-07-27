@@ -1,5 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #00b09b;
     background: -webkit-linear-gradient(to right, #96c93d, #00b09b);
     background: linear-gradient(to right, #96c93d, #00b09b);
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+img {
+    width: 400px;
+    height: 400px;
+}
+
+.recipe-box {
+    background-color: azure;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    width: 700px;
+    height: 900px;
+}
+
+.meal-body {
+    text-align: center;
+    font-size: 30px;
+}
+
+.meal-header {
+    justify-content: center;
+    align-items: right;
+}
+
+.random {
+    justify-content: center;
+    text-align: center;
+    font-size: 70px;
 }
